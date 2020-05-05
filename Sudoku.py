@@ -89,9 +89,9 @@ def dg(m,n,i,l,flag):
 
 
 #find the cell whose available value only have 1.
-def wy(m,n,l): 
+def wy(m,n): 
     flag=0
-    for i in range(l+1):
+    for i in range(81):
         if n[i]==0:
             q_l,r,c=ql(m,i)
             if len(q_l)==1:
@@ -208,17 +208,23 @@ def solver1(m,n):
 #Solver2: loop search only value in available list first, then do the recursive loop
 
 def solver2(m,n):
+    
+    flag=1
+    while flag==1:
+        m,n,flag=wy(m,n)
+    
+    
+    l=0
     for i in reversed(range(1,81)):
         if n[i]==0:
             l=i
             break
     
-    flag=1
-    while flag==1:
-        m,n,flag=wy(m,n,l)
-    flag=0
-    i=0
-    flag=dg(m,n,i,l,flag)
+    if l!=0:
+        flag=0
+        i=0
+        flag=dg(m,n,i,l,flag)
+        
     return m
 
 
@@ -227,20 +233,23 @@ def solver2(m,n):
 def solver3(m,n):
 
     flag=1
+    
     while flag==1:
         
         m,n,flag=h_c(m,n)
         m,n,flag=v_c(m,n)
         m,n,flag=n_c(m,n)
     
+    l=0
     for i in reversed(range(1,81)):
         if n[i]==0:
             l=i
             break
-    i=0
-    flag=0
-    flag=dg(m,n,i,l,flag)
-    
+    if l!=0:
+        i=0
+        flag=0
+        flag=dg(m,n,i,l,flag)
+
     return m
 
 # generate result
