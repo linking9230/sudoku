@@ -259,20 +259,26 @@ if __name__ == "__main__":
     m,n=readdata()
     
 #     Solver1
+    m1=np.array(m)
+    n1=np.array(n)
     st1=time.time()
-    m_res1=solver1(m,n)
+    m_res1=solver1(m1,n1)
     ut1=time.time()-st1
     print(m_res1,ut1)
     
 #     Solver2
+    m2=np.array(m)
+    n2=np.array(n)
     st2=time.time()
-    m_res2=solver2(m,n)
+    m_res2=solver2(m2,n2)
     ut2=time.time()-st2
     print(m_res2,ut2)
 
 #     solver3
+    m3=np.array(m)
+    n3=np.array(n)
     st3=time.time()
-    m_res3=solver3(m,n)
+    m_res3=solver3(m3,n3)
     ut3=time.time()-st3
     print(m_res3,ut3)
 
